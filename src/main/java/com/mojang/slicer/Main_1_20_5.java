@@ -22,7 +22,7 @@ public class Main_1_20_5 {
         return new InputFile(path).outputs(outputs);
     }
 
-    private static final List<InputFile> INPUTS = List.of(
+    public static final List<InputFile> INPUTS = List.of(
         input("assets/minecraft/textures/map/map_icons.png",
             mapDecoration("player", 0),
             mapDecoration("frame", 1),

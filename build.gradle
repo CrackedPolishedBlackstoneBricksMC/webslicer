@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id "war"
+    id "org.teavm" version "0.11.0"
 }
 
 group 'com.mojang'
@@ -17,6 +19,57 @@ repositories {
 
 dependencies {
     compileOnly 'com.google.code.findbugs:jsr305:2.0.1'
+    
+    //teavm
+    implementation teavm.libs.jsoApis
+}
+
+teavm {
+    all {
+        mainClass = "agency.highlysuspect.webslicer.TeaMain"
+    }
+    js {
+        addedToWebApp = true
+        targetFileName = "webslicer.js"
+        optimization = org.teavm.gradle.api.OptimizationLevel.NONE
+        obfuscated = false
+    }
+    wasmGC {
+        addedToWebApp = true
+        targetFileName = "webslicer.wasm"
+        optimization = org.teavm.gradle.api.OptimizationLevel.NONE
+        obfuscated = false
+    }
+}
+
+//i have no idea what im doing
+tasks.register("explodedWar", Sync) {
+    group "build"
+    dependsOn war
+//    dependsOn tasks.generateWasmGC
+    dependsOn tasks.generateJavaScript
+    
+    into "${buildDir}/exploded"
+    
+    //with war //yeah but then i get META-INF and WEB-INF and crap
+    
+    into ("") {
+        with processResources
+        from war.webAppDirectory
+    }
+//    into ("wasm-gc") {
+//        from tasks.generateWasmGC.outputDir
+//    }
+    into("js") {
+        from tasks.generateJavaScript.outputDir
+    }
+}
+
+tasks.register("serve", Exec) {
+    dependsOn tasks.explodedWar
+    
+    workingDir "${buildDir}/exploded"
+    commandLine "miniserve", "-v", "--index", "index.html"
 }
 
 processResources {

@@ -119,7 +119,7 @@ public class Main_1_20_2 {
         };
     }
 
-    private static final List<InputFile> INPUTS = List.of(
+    public static final List<InputFile> INPUTS = List.of(
         input("assets/minecraft/textures/gui/chat_tags.png",
             new OutputFile("assets/minecraft/textures/gui/sprites/icon/chat_modified.png", new Box(0, 0, 9, 9, 32, 32))
         ),

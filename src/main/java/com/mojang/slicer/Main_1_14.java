@@ -68,7 +68,7 @@ public class Main_1_14 {
         return new InputFile(path).outputs(outputs);
     }
 
-    private static final List<InputFile> INPUTS = List.of(
+    public static final List<InputFile> INPUTS = List.of(
         input("assets/minecraft/textures/painting/paintings_kristoffer_zetterstrand.png",
             painting("back", 15, 0, 1, 1),
 
