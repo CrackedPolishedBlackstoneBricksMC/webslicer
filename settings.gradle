@@ -1,3 +1,1 @@
 rootProject.name = 'slicer'
-
-include '1.14', '1.20.2', '1.20.5'

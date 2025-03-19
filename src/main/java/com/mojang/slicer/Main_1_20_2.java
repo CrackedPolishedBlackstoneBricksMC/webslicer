@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.function.UnaryOperator;
 
 @ParametersAreNonnullByDefault
-public class Main {
+public class Main_1_20_2 {
     private static final Box STANDARD_CONTAINER_BOX = new Box(0, 0, 176, 166, 256, 256);
     private static final String BUTTON_WIDGET_METADATA = """
         {

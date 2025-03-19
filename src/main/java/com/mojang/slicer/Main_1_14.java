@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.function.UnaryOperator;
 
 @ParametersAreNonnullByDefault
-public class Main {
+public class Main_1_14 {
     private static Box b256(final int x, final int y, final int w, final int h) {
         return new Box(x, y, w, h, 256, 256);
     }
