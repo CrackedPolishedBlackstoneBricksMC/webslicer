@@ -24,6 +24,10 @@ dependencies {
     implementation teavm.libs.jsoApis
 }
 
+configurations {
+    teavmClasspath.extendsFrom tasks.compileJava.classpath
+}
+
 teavm {
     all {
         mainClass = "agency.highlysuspect.webslicer.TeaMain"
